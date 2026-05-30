@@ -1,5 +1,2 @@
-.vs
-*.txt
-*.exe
-*.log
-*.pdf
+*
+!*.cpp
