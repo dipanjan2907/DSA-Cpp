@@ -2,3 +2,5 @@
 !*.cpp
 !*.c
 !*.java
+*temp.cpp
+*temp.exe

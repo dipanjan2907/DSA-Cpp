@@ -3,37 +3,26 @@ using namespace std;
 class Solution
 {
 public:
-    int compress(vector<char> &chars)
+    int countPrimes(int n)
     {
-        int n = chars.size();
-        int idx = 0;
-        for (int i = 0; i < n; i++)
+        vector<bool> isPrime(n + 1, true);
+        int count = 0;
+        for (int i = 2; i < n; i++)
         {
-            char ch = chars[i];
-            int count = 0;
-            while (i < n && chars[i] == ch)
+            if (isPrime[i])
             {
                 count++;
-                i++;
+                for (int j = i * 2; j < n; j += i)
+                {
+                    isPrime[j] = false;
+                }
             }
-
-            if (count == 1)
-                chars[idx++] = ch;
-            else
-            {
-                chars[idx++] = ch;
-                for (char dig : to_string(count))
-                    chars[idx++] = dig;
-            }
-            i--;
         }
-
-        chars.resize(idx);
-        return idx;
+        return count;
     }
 };
 int main()
 {
-    cout << "Hello, World!" << endl;
+    int n = 50;
     return 0;
 }
